@@ -9,7 +9,7 @@ function App() {
   return <>
       {/* Complemente NavBar con bootstrap */}
       <NavBar />
-      <ItemListContainer/>
+      <ItemListContainer greetings="Ofertas de la semana"/>
   </>;
   ;
 }
