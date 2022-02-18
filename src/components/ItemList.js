@@ -18,7 +18,7 @@ function ItemList() {
         return new Promise((res, rej) => {
             setTimeout(() => {
             res(tableProducts);
-            }, Math.random() * 3000);
+            }, Math.random() * 2000)+3000;
         });
         };
 
