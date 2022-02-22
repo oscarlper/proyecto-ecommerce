@@ -17,11 +17,11 @@ function ItemCount(props) {
     }
 
     return<>
-        <div>Cantidad: {countItem}</div>
-        <div class="btn-group-sm" role="group" aria-label="Basic example">
-            <button type="button" className="btn btn-primary" onClick={handleClickSubs}>-</button>
-            <button type="button" className="btn btn-primary">Agregar</button>
-            <button type="button" className="btn btn-primary" onClick={handleClickAdd}>+</button>
+        <div className="btn-group-sm" role="group" aria-label="Basic example">
+            <div>Cantidad: {countItem}</div>
+            <button type="button" className="btn btn-primary" onClick={handleClickSubs}>-</button>&nbsp;
+            <button type="button" className="btn btn-primary">Agregar</button>&nbsp;
+            <button type="button" className="btn btn-primary" onClick={handleClickAdd}>+</button>&nbsp;
         </div>
     </>;
 }

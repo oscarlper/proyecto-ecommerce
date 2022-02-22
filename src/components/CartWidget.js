@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from '../image/cart.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CartWidget = () => {
@@ -10,7 +9,7 @@ const CartWidget = () => {
             href="localhost:3000"
             rel="noopener noreferrer"
             >
-            <img src={logo} alt="cartIcon"/>
+            <img src="./image/cart.png" alt="cartIcon"/>
             </a>
         </div>        
     )
