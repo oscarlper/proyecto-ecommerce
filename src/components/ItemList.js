@@ -4,7 +4,9 @@ import Item from './Item';
 function ItemList(props) {
     
     const {greetings, tableProducts}=props
+    
     return<>
+            
             <h2>{greetings}</h2>
             {tableProducts.map((product) => (
                 <Item 

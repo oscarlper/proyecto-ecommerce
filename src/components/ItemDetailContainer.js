@@ -1,13 +1,16 @@
 import React , {useState, useEffect } from 'react';
 import ItemDetail from './ItemDetail';
+import { useParams } from 'react-router-dom';
 
 function ItemDetailContainer(props) {
+
+  const category = useParams()
 
   const {greetings}=props
   const [productDetail, setProductDetail] = useState({})
   
   useEffect(() => {
-    dbProducts().then(res => setProductDetail(res.find(product => product.id === 2)))
+    dbProducts().then(res => setProductDetail(res.find(product => product.id === 3 )))
   }, []);
 
    const dbProducts = () => {

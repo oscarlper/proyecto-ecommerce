@@ -3,8 +3,6 @@ import ItemCount from './ItemCount';
 
 function ItemDetail({productSelected}) {
 
-    console.log(productSelected);
-
     return<>
         <div className="card text-center">
         <div className="card-header">
