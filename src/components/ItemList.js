@@ -3,12 +3,12 @@ import Item from './Item';
 
 function ItemList(props) {
     
-    const {greetings, tableProducts}=props
+    const {greetings, products}=props
     
     return<>
             
             <h2>{greetings}</h2>
-            {tableProducts.map((product) => (
+            {products.map((product) => (
                 <Item 
                     key = {product.id}
                     itemId = {product.id}

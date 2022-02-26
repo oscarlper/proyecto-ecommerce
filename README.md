@@ -1,11 +1,21 @@
-Inicio de proyecto ecommerce CoderHouse
+# Proyecto Ecommerce
 
-C3 - 08/02 - Entrega Componente menu con boostrap
+_Modulo ecommerce para curso React @ Coder House_
 
-C4 - 10/02 - Entrega CartWidget y ItemListContainer
+## Comenzando 🚀
 
-C5 - 15/02 - Entrega Botones itemCount 
+_Entrega intermedia de proyecto final - Ecommerce Clase 8 - Routing y Navegacion_
 
-C6 - 17/02 - Catalogo con maps y promises
+![](https://github.com/sispol/ecommerce.gif)
 
-C7 - 22/02 - Componentes ItemDetail & ItemDetailContainer
+## Construido con 🛠️
+
+_ReactJS_ _Bootstrap_
+
+* [React](https://reactjs.org) - A JavaScript library for building user interfaces - React
+* [Bootstrap](https://getbootstrap.com/) - Build fast, responsive sites with Bootstrap
+
+## Autores ✒️
+
+* **Oscar Pereyra** - [GitHub](https://github.com/sispol)
+

@@ -6,7 +6,7 @@ const CartWidget = () => {
     return(
         <div>
             <NavLink to="/" className="nav__link" >
-                <img src="./image/cart.png" alt="cartIcon"/>
+                <img src="/image/cart.png" alt="cartIcon"/>
             </NavLink>
         </div>        
     )
