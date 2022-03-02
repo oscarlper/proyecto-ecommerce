@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ItemCount from './ItemCount';
 
-function ItemDetail({productSelected}) {
+function ItemDetail({productSelected},{countItem}) {
+
+    const [countItem2,setCountItem2] = useState(0);
+
+    const getItemCountParentData = (values) => {
+        setCountItem2(values);
+        console.log(values);
+        console.log(countItem2);
+    };
 
     return<>
         <div className="card text-center">
@@ -15,7 +23,7 @@ function ItemDetail({productSelected}) {
             <p className="card-text">{productSelected.price} AR$</p>
         </div>
         <div className="card-footer text-muted">
-            <ItemCount itemId={productSelected.id} itemStock={productSelected.stock}/>
+            <ItemCount itemId={productSelected.id} itemStock={productSelected.stock} sendDataParent={getItemCountParentData}/>
         </div>
         </div>
     </>;
