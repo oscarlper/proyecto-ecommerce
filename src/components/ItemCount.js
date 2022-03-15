@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-function ItemCount(props) {
+function ItemCount({itemStock,onAdd}) {
     
-    const {itemStock} = props;
-    const [countItem,setCountItem] = useState(0);
+    const [countItem,setCountItem] = useState(1);
     const [status,setStatus] = useState(0);
-    
+
     const handleClickSub =()=>{
-        if (countItem >= 1 ) {
+        if (countItem > 1 ) {
             setCountItem(countItem-1);
         }   
     }
@@ -19,11 +18,6 @@ function ItemCount(props) {
         }
     }
 
-    const handleClickonAdd =()=>{
-        props.sendDataParent(countItem);
-        setStatus(1);
-    };
-
     return<>
         <div className="btn-group-sm" role="group" aria-label="Basic example">
             <div>
@@ -33,14 +27,13 @@ function ItemCount(props) {
                 <button type="button" className="btn btn-outline-secondary" onClick={handleClickSum} hidden={status === 1}>+</button>&nbsp;
                 <button type="button" 
                         className="btn btn-outline-success" 
-                        onClick={handleClickonAdd}
-                        hidden={countItem === 0 || status === 1}>
+                        onClick={()=>onAdd(countItem)}
+                        disabled={countItem === 0 || status === 1}>
                         Agregar
                 </button>
-                <NavLink to="/cart" className="nav-link nav__link" hidden={status === 0} >
+                <NavLink to="/cart" className="nav-link nav__link" dissabled={status === 0} >
                     <button type="button" 
-                            className="btn btn-outline-warning" 
-                            onClick={handleClickonAdd}>
+                            className="btn btn-outline-warning">
                             Comprar
                     </button>    
                 </NavLink>

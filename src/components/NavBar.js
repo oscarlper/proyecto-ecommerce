@@ -9,9 +9,6 @@ function NavBar() {
             <ul className="nav nav-pills" id="navbartop">
                 <h4><NavLink to="/" className="nav__link nostyle" >eCommerce</NavLink></h4>
                 <li className="nav-item">
-                    <CartWidget/>
-                </li>
-                <li className="nav-item">
                     <NavLink to="/" className="nav-link nav__link" >Home</NavLink>
                 </li>
                 <li className="nav-item">
@@ -22,6 +19,9 @@ function NavBar() {
                 </li>
                 <li className="nav-item">
                     <NavLink to="/category/firewall" className="nav-link nav__link">Firewall</NavLink>
+                </li>
+                <li className="nav-item">
+                    <CartWidget/>
                 </li>
         </ul>
         </>

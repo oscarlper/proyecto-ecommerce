@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import React, {useContext } from 'react';
 import ItemCount from './ItemCount';
+import { CartContext } from '../context/CartContext'
 
-function ItemDetail({productSelected},{countItem}) {
+export const ItemDetail = ({productSelected}) => {
+    
+    const { addItem } = useContext(CartContext)
 
-    const [countItem2,setCountItem2] = useState(0);
+    const onAdd=(quantity)=>{
+        addItem(productSelected,quantity) 
+    }
 
-    const getItemCountParentData = (values) => {
-        setCountItem2(values);
-        console.log(values);
-        console.log(countItem2);
-    };
-
-    return<>
+    return (
         <div className="card text-center">
         <div className="card-header">
             <h2>{productSelected.name}</h2>
@@ -23,10 +22,8 @@ function ItemDetail({productSelected},{countItem}) {
             <p className="card-text">{productSelected.price} AR$</p>
         </div>
         <div className="card-footer text-muted">
-            <ItemCount itemId={productSelected.id} itemStock={productSelected.stock} sendDataParent={getItemCountParentData}/>
+            <ItemCount onAdd={onAdd} itemId={productSelected.id} itemStock={productSelected.stock} />
         </div>
         </div>
-    </>;
+    )
 }
-
-export default ItemDetail;

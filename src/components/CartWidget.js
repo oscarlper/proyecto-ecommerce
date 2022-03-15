@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { CartContext } from '../context/CartContext'
 
-const CartWidget = () => {
+
+export const CartWidget = () => {
+
+    const {cartItems} = useContext(CartContext)
+
     return(
-        <div>
-            <NavLink to="/" className="nav__link" >
-                <img src="/image/cart.png" alt="cartIcon"/>
+        <>
+            <NavLink to="/cart" className="nav__link noLinkStyle" >
+            <img className="cartIcon" src="/image/cart.png" alt="cartIcon"/>
+            {cartItems >= 1
+                ?<div className="cartNumber">{cartItems}</div>
+                :<div></div>}
             </NavLink>
-        </div>        
+        </>
     )
+
 }
 
 export default CartWidget;
