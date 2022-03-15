@@ -7,7 +7,7 @@ const CartContainer = () => {
 const {cart,clear,removeItem} = useContext(CartContext)
 
 return (
-
+    
     <>
     {
         cart.length !== 0 ?
@@ -15,21 +15,21 @@ return (
     <table class="table">
     <thead>
         <tr>
-    
-            <th scope="col">item #</th>
+            <th scope="col">item Cod.</th>
             <th scope="col">Descripcion</th>
-            <th scope="col">Precio</th>
+            <th scope="col">Precio U.</th>
             <th scope="col">Cantidad</th>
+            <th scope="col">Precio Total por Item</th>
         </tr>
     </thead>
             { cart.map((e) => 
-                
                 <tbody>
                     <tr>
                         <th scope="row">{e.id}</th>
-                        <td>{e.name}</td>
+                        <td><small>{e.name}</small></td>
                         <td>{e.price}</td>
-                        <td>0</td>
+                        <td>{e.amount}</td>
+                        <td>{e.amount*e.price}</td>
                         <td><button onClick={()=>removeItem(e.id)}className="badge bg-danger noLinkStyle">X</button></td>
                     </tr>
                 </tbody>

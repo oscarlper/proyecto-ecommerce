@@ -1,14 +1,15 @@
-import React, {useContext } from 'react';
+import React, {useContext} from 'react';
 import ItemCount from './ItemCount';
 import { CartContext } from '../context/CartContext'
 
 export const ItemDetail = ({productSelected}) => {
     
     const { addItem } = useContext(CartContext)
-
+    
     const onAdd=(quantity)=>{
         addItem(productSelected,quantity) 
     }
+
 
     return (
         <div className="card text-center">
