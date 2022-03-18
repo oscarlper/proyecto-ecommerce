@@ -1,39 +1,36 @@
 import React , {useState, useEffect } from 'react';
-import { ItemDetail } from './ItemDetail';
-import { productsDB } from '../data/productsDB';
+import { ItemDetail }  from './ItemDetail';
 import { useParams } from 'react-router-dom';
+import { doc, getDoc } from 'firebase/firestore';
+import db from '../services/firebase';
 
-function ItemDetailContainer(props) {
+const ItemDetailContainer = () => {
 
-  const itemId = useParams()
-  
-  const {greetings}=props
-  const [product, setProductDetail] = useState({})
+  const { itemId } = useParams()
+  const [selectedItem, setSelectedItem] = useState()
+  const [load, setLoad] = useState(true)
+
+  const getSelected = async () => {
+    try {
+      const document = doc(db,"productos", itemId)
+      const response = await getDoc(document)
+      const result = { id: response.id, ...response.data() }
+      setSelectedItem(result)
+      setLoad(false)
+    } catch (error) {
+      console.warn("Error: ", error)
+    }
+  }
 
   useEffect(() => {
-    dbProducts().then(res => setProductDetail(res.find(product => product.id === parseInt(itemId.id) )))
-  }, [itemId.id]);
-
-   const dbProducts = () => {
-      return new Promise((res, rej) => {
-          setTimeout(() => {
-          res(productsDB);
-          }, (Math.random() * 2000));
-      });
-      };
+    getSelected()
+  },[itemId])
 
       return (
-          <div>
-            <h2>{greetings}</h2>
-              <>
-                <div className="container">
-                  <div className="row">
-                    <ItemDetail productSelected={product}/>
-                  </div>
-                </div>  
-              </>
-          </div>
-        );
-      }
+          <>
+            { load ? <h3>cargando...</h3> : <ItemDetail productSelected={selectedItem}/> }
+          </>
+        )
+}
   
-        export default ItemDetailContainer;
+export default ItemDetailContainer;

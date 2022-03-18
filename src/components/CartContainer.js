@@ -12,7 +12,7 @@ return (
     {
         cart.length !== 0 ?
         (
-    <table class="table">
+    <table className="table">
     <thead>
         <tr>
             <th scope="col">item Cod.</th>
@@ -22,19 +22,22 @@ return (
             <th scope="col">Precio Total por Item</th>
         </tr>
     </thead>
+    <tbody>
             { cart.map((e) => 
-                <tbody>
-                    <tr>
-                        <th scope="row">{e.id}</th>
-                        <td><small>{e.name}</small></td>
-                        <td>{e.price}</td>
-                        <td>{e.amount}</td>
-                        <td>{e.amount*e.price}</td>
+                    <tr key={e.id}>
+                        <td><small>{e.id}</small></td>
+                        <td><small>{e.title}</small></td>
+                        <td><small>{e.price}</small></td>
+                        <td><small>{e.amount}</small></td>
+                        <td><small>{e.amount*e.price}</small></td>
                         <td><button onClick={()=>removeItem(e.id)}className="badge bg-danger noLinkStyle">X</button></td>
                     </tr>
-                </tbody>
             )}
-            <button onClick={()=>clear()}className="badge bg-danger noLinkStyle">Vaciar Carrito</button>
+            <tr>
+                <td></td><td></td><td></td><td>Total</td><td>{cart.reduce((acum,e)=>acum+(e.price*e.amount),0)}</td>
+                <td><button onClick={()=>clear()}className="badge bg-danger noLinkStyle">Vaciar Carrito</button></td>
+            </tr>
+            </tbody>
         </table>
         ):(
             <div>

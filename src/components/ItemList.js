@@ -3,17 +3,16 @@ import Item from './Item';
 
 function ItemList(props) {
     
-    const {greetings, products}=props
+    const {greetings, data}=props
     
     return<>
-            
             <h2>{greetings}</h2>
-            {products.map((product) => (
+            {data.map((product) => (
                 <Item 
                     key = {product.id}
                     itemId = {product.id}
                     itemStock = {product.stock} 
-                    itemTitle = {product.name} 
+                    itemTitle = {product.title} 
                     itemImage = {product.image}
                     itemPrice = {product.price}/>
             ))}
