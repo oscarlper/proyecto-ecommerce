@@ -28,7 +28,7 @@ const ItemDetailContainer = () => {
 
       return (
           <>
-            { load ? <h3>cargando...</h3> : <ItemDetail productSelected={selectedItem}/> }
+            { load ? <h3>cargando...</h3> : <ItemDetail product={selectedItem}/> }
           </>
         )
 }
