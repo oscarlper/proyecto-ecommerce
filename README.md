@@ -4,7 +4,7 @@ _Modulo ecommerce para curso React @ Coder House_
 
 ## Estado del proyecto 🚀
 
-_Entrega intermedia de proyecto final - Ecommerce Clase 8 - Routing y Navegacion_
+_Entrega final - Ecommerce_
 
 ![](https://github.com/sispol/proyecto-ecommerce/blob/master/ecommerce.gif)
 

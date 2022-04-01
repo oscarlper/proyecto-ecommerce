@@ -6,24 +6,26 @@ import '../styles.css';
 function NavBar() {
     return (
         <>
-            <ul className="nav nav-pills" id="navbartop">
-                <h4><NavLink to="/" className="nav__link nostyle" >eCommerce</NavLink></h4>
+           <div className="navbar navbar-right navbar-expand navbar-light bg-warning">
+        <h4><NavLink to="/" className="nav-link" ><img src="/image/logo.png" className="logo" alt="ecommerce"/></NavLink></h4>
+            <ul className="navbar-nav">
                 <li className="nav-item">
-                    <NavLink to="/" className="nav-link nav__link" >Home</NavLink>
+                    <NavLink to="/" className="nav-link" >Home</NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink to="/category/intel" className="nav-link  nav__link">PC/MiniPc/Nuc</NavLink>
+                    <NavLink to="/category/intel" className="nav-link">PC/MiniPc/Nuc</NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink to="/category/industrial" className="nav-link nav__link">PC industriales</NavLink>
+                    <NavLink to="/category/industrial" className="nav-link">PC industriales</NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink to="/category/firewall" className="nav-link nav__link">Firewall</NavLink>
+                    <NavLink to="/category/firewall" className="nav-link">Firewall</NavLink>
                 </li>
                 <li className="nav-item">
                     <CartWidget/>
                 </li>
-        </ul>
+            </ul>
+        </div>
         </>
     )
 }

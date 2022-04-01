@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { CartContext } from '../context/CartContext';
 import '../styles.css';
-import { generateOrder } from '../services/firebase';
+import { generateOrder, updateStock } from '../services/firebase';
+import Swal from "sweetalert2";
 
 const initialBuyer = {
     name: "",
@@ -13,6 +14,7 @@ export const CartContainer = () => {
 
     const {cart,clear,removeItem} = useContext(CartContext)
     const [buyer, setBuyer] = useState(initialBuyer)
+    const [sellOk, setSellOk] = useState(false)
     
     let total = 0
 
@@ -28,16 +30,21 @@ export const CartContainer = () => {
     const handlerSubmit = (e) => {
         e.preventDefault()
         if (buyer.name !== "" && buyer.phone !== "" && buyer.email !== "") {
-            generateOrder(order).then((res) => {
-                alert(`Compra exitosa. Orden #: ${res.id}`);
-                clear();
-            })
+            generateOrder(order)
+                .then((res) => {
+                    new Swal("Pedido enviado",`Por favor toma nota de este código para continuar la compra con el comercio: ${res.id}`)
+                    setSellOk(true)
+                })
+                .then(()=> cart.forEach((item) => updateStock(item.id,item.amount)))
+                .then(()=> clear()
+                )
+                .catch((err)=> new alert('hubo un error')
+                )
         } else {
-            console.log({
-                title: "Hubo un error en tus datos",
-                text: "Revisa el formulario de tus datos y vuelve a enviar el pedido",
-                icon: "error",
-                button: "Ok",
+            new Swal({
+                icon: 'error',
+                title: "Hay un error en los datos.",
+                text: "Por favor revisa tus datos y vuelve a enviar el pedido.",
             })
         }
     }
@@ -60,7 +67,7 @@ return (
     <thead>
         <tr>
             <th scope="col">item Cod.</th>
-            <th scope="col">Descripcion</th>
+            <th scope="col">Descripción</th>
             <th scope="col">Precio U.</th>
             <th scope="col">Cantidad</th>
             <th scope="col">Precio Total por Item</th>
@@ -88,40 +95,63 @@ return (
             </tr>
             </tbody>
         </table>
-        <p>Complta con tus datos para finalizar la compra</p>
-                                <form id="buyerForm"
-                                    onSubmit={handlerSubmit}
-                                    onChange={handlerChange}
-                                >
-                                    <input 
-                                        type="text" 
-                                        placeholder="Nombre"
-                                        name="name"
-                                        value={order.name}
-                                    />
-                                    <input 
-                                        type="number" 
-                                        placeholder="Telefono"
-                                        name="phone"
-                                        value={order.phone}
-                                    />
-                                    <input 
-                                        type="email" 
-                                        placeholder="Email"
-                                        name="email"
-                                        value={order.email}
-                                    />
-                                    <button className="btn btn-success d-block mt-2">
-                                        Enviar orden
-                                    </button>
-                                </form>
+
+        <div className="container-sm">
+            <div className="row">
+            <div className="col-3 center"/>
+                <div className="col-6 center">
+                <h3>Completa el formulario con tus datos para finalizar la compra</h3>
+                <form id="buyerForm"
+                            onSubmit={handlerSubmit}
+                            onChange={handlerChange}>
+                    <input
+                        placeholder = "Nombre"
+                        type="text" 
+                        name="name"
+                        value={order.name}
+                        className="form-control"
+                    /><br/>
+                    <input 
+                        placeholder = "Telefono"
+                        type="number" 
+                        name="phone"
+                        value={order.phone}
+                        className="form-control"
+                    /><br/>
+                    <input
+                        placeholder = "Email"
+                        type="email" 
+                        name="email"
+                        value={order.email}
+                        className="form-control"
+                    /><br/>
+                    <button className="btn btn-success d-block mt-2">
+                        Enviar orden
+                    </button>
+                </form>
+                </div>
+            <div className="col-3 center"/>
+            </div>
+        </div>
+
         </div>
         ):(
-            <div>
-                <h4>Carrito vacio !!!</h4>
-            </div>
+            sellOk ? (
+                <div className="card-body">
+                    <div className="card text-center">
+                        <h1><strong>Gracias por su compra !!!</strong></h1>
+                        <img src="/image/gracias.jpg" className="img-fluid mx-auto" alt="..."></img>
+                    </div>
+                </div>
+            ):(
+                <div className="card-body">
+                    <div className="card text-center">
+                        <h1><strong>Carrito vacío !!!</strong></h1>
+                        <img src="/image/empty.png" className="img-fluid mx-auto" alt="..."></img>
+                    </div>
+                </div>
+            )
         )}
-
     </>
     )
 }

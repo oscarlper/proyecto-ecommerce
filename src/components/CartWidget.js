@@ -9,12 +9,12 @@ export const CartWidget = () => {
 
     return(
         <>
-            <NavLink to="/cart" className="nav__link noLinkStyle" >
-            <img className="cartIcon" src="/image/cart.png" alt="cartIcon"/>
-            {cartItems >= 1
-                ?<div className="cartNumber">{cartItems}</div>
-                :<div></div>}
-            </NavLink>
+                <NavLink to="/cart" className="nav__link noLinkStyle" >
+                <img className="cartWidget" src="/image/cart.png" alt="cartIcon"/>
+                {cartItems >= 1
+                    ?<div className="cartNumber">{cartItems}</div>
+                    :<div></div>}
+                </NavLink>
         </>
     )
 

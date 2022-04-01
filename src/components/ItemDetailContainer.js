@@ -10,7 +10,7 @@ const ItemDetailContainer = () => {
   const [selectedItem, setSelectedItem] = useState()
   const [load, setLoad] = useState(true)
 
-  const getSelected = async () => {
+  const getSelected = async()=>{
     try {
       const document = doc(db,"productos", itemId)
       const response = await getDoc(document)

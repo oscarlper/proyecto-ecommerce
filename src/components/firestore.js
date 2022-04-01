@@ -8,7 +8,6 @@ export const FireStore = ()=>{
         const getData = async()=>{
             const query = collection(db, 'item');
             const response = await getDocs(query);
-            console.log('response',response);
         }
         getData();
     },[])
